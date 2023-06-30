@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Details</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+<div class="container">
+  <h2>Fill your details</h2>
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Click Me</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Fill your Details</h4>
+        </div>
+        <div class="modal-body">
+<p>
+          <form  action="add" method="post">
+
+            {% csrf_token %}
+
+        <h6>
+        <label>Name</label>
+        <input type="text" name="fullname" placeholder="enter your full name">
+</h6>
+            <h6>
+        <label>Age</label>
+        <input type="text" name="age" placeholder="enter your Age">
+</h6>
+            <h6>
+        <label>Date of birth</label>
+        <input type="text" name="dob" placeholder="enter your Date of birth">
+</h6>
+            <h6>
+        <label>Gender</label>
+        <input type="text" name="gender" placeholder="enter  your gender">
+</h6>
+            <h6>
+        <label>Phone Number</label>
+        <input type="text" name="phone_number" placeholder="enter your Phone Number">
+</h6>
+            <h6>
+        <label style="padding-left:30px;">Email </label>
+        <input  type="email" name="email" placeholder="enter your email">
+</h6>
+            <h6>
+        <label>Address </label>
+        <input type="text" name="address" placeholder="enter your Address">
+</h6>
+            <h6>
+        <label >Department</label>
+        <input type="text" name="department" placeholder="enter your department">
+</h6>
+            <h6>
+        <label >Course</label>
+        <input type="text" name="course" placeholder="enter your course">
+</h6>
+            <h6>
+        <input type="submit">
+            </h6>
+      </form>
+
+          </p>
+
+        </div>
+
+            {% if user.is_authenticated %}
+               <button><a  class="btn btn-secondary"  href="logout">Logout</a></button>
+			{% endif %}
+
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+{% for msg in messages %}
+{{ msg }} <a href="/">Home</a>
+{% endfor %}
+</body>
+</html>
